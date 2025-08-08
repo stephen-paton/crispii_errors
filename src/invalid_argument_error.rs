@@ -1,6 +1,6 @@
 use std::{error::Error, fmt};
 
-use crate::CrispiiError;
+use crate::{CrispiiError, OfficialCrispiiError};
 
 /// To indicate to the consumer of a function that the argument they passed into it was invalid, and an explanation as to why it was invalid
 /// ```
@@ -32,7 +32,7 @@ impl InvalidArgumentError {
 }
 
 impl Error for InvalidArgumentError {}
-
+impl OfficialCrispiiError for InvalidArgumentError {}
 impl CrispiiError for InvalidArgumentError {}
 
 impl fmt::Display for InvalidArgumentError {

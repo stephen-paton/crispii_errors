@@ -1,6 +1,6 @@
 use std::{error::Error, fmt};
 
-use crate::CrispiiError;
+use crate::{CrispiiError, OfficialCrispiiError};
 
 /// To indicate to the caller of a function that the operation that they attempted to perform using the function was impossible, and an explanation as to why it was impossible
 /// ```
@@ -28,7 +28,7 @@ impl ImpossibleOperationError {
 }
 
 impl Error for ImpossibleOperationError {}
-
+impl OfficialCrispiiError for ImpossibleOperationError {}
 impl CrispiiError for ImpossibleOperationError {}
 
 impl fmt::Display for ImpossibleOperationError {

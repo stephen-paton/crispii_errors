@@ -1,4 +1,7 @@
 //! Errors intended for use in Crispii
+mod official_crispii_error;
+pub(crate) use official_crispii_error::OfficialCrispiiError;
+
 mod crispii_error;
 pub use crispii_error::CrispiiError;
 
