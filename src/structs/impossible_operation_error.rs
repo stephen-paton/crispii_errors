@@ -1,14 +1,17 @@
 use std::{error::Error, fmt};
 
-use crate::{CrispiiError, OfficialCrispiiError};
+use crate::traits::CrispiiError;
 
 /// To indicate to the caller of a function that the operation that they attempted to perform using the function was impossible, and an explanation as to why it was impossible
 /// ```
-///     use crispii_errors::{ImpossibleOperationError, CrispiiError};
+///     use crispii_errors::{
+///         enums::CrispiiError,
+///         structs::ImpossibleOperationError,
+///     };
 /// 
-///     fn add_one(num: u8) -> Result<u8, Box<dyn CrispiiError>> {
+///     fn add_one(num: u8) -> Result<u8, CrispiiError> {
 ///         if num == u8::MAX {
-///             return Err(Box::new(ImpossibleOperationError::new("'num' is already equal to the maximum possible u8 value")));
+///             return Err(CrispiiError::ImpossibleOperation(ImpossibleOperationError::new("'num' is already equal to the maximum possible u8 value")));
 ///         }
 ///         
 ///         Ok(num + 1)
@@ -28,7 +31,6 @@ impl ImpossibleOperationError {
 }
 
 impl Error for ImpossibleOperationError {}
-impl OfficialCrispiiError for ImpossibleOperationError {}
 impl CrispiiError for ImpossibleOperationError {}
 
 impl fmt::Display for ImpossibleOperationError {

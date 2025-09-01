@@ -1,9 +1,9 @@
 [package]
 name = "crispii_errors"
-version = "0.1.3"
+version = "1.0.0"
 edition = "2024"
 rust-version = "1.85.0"
-description = "Errors intended for use in Crispii"
+description = "Provides a CrispiiError enum to be returned by any failing crispii functions."
 readme = "README.md"
 repository = "https://github.com/stephen-paton/crispii_errors"
 authors = ["Stephen Paton <69050696+stephen-paton@users.noreply.github.com>"]

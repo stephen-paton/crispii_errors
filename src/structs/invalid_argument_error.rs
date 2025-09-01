@@ -1,17 +1,20 @@
 use std::{error::Error, fmt};
 
-use crate::{CrispiiError, OfficialCrispiiError};
+use crate::traits::CrispiiError;
 
 /// To indicate to the consumer of a function that the argument they passed into it was invalid, and an explanation as to why it was invalid
 /// ```
-///     use crispii_errors::{InvalidArgumentError, CrispiiError};
+///     use crispii_errors::{
+///         enums::CrispiiError,
+///         structs::InvalidArgumentError,
+///     };
 /// 
-///     fn set_colour(r: u8, g: u8, b: u8, a: u8) -> Result<(), Box<dyn CrispiiError>> {
+///     fn set_colour(r: u8, g: u8, b: u8, a: u8) -> Result<(), CrispiiError> {
 ///         if a > 100 {
-///             return Err(Box::new(InvalidArgumentError::new("a", "Must be between 0 and 100 (inclusive)")));
+///             return Err(CrispiiError::InvalidArgument(InvalidArgumentError::new("a", "Must be between 0 and 100 (inclusive)")));
 ///         }
 /// 
-///         // logic to set colour
+///         // ... logic to set colour ...
 /// 
 ///         Ok(())
 ///     }
@@ -32,7 +35,6 @@ impl InvalidArgumentError {
 }
 
 impl Error for InvalidArgumentError {}
-impl OfficialCrispiiError for InvalidArgumentError {}
 impl CrispiiError for InvalidArgumentError {}
 
 impl fmt::Display for InvalidArgumentError {
